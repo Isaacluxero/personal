@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+// Primary
+$red: hsl(0, 100%, 74%);
+$green: hsl(154, 59%, 51%);
+
+// Accent
+$blue: hsl(248, 32%, 49%);
+
+// Neutral
+$dark-blue: hsl(249, 10%, 26%);
+$grayish-blue: hsl(246, 25%, 77%);
+
+// Media width breakpoints
+$medium: "(min-width: 768px)";
+
+@mixin shadow($color: hsl(0, 64%, 65%), $size: 0.45em) {
+    box-shadow: 0px $size 0px 0px $color;
+}
+
+body {
+    background: url("../images/bg-intro-mobile.png"), $red {
+        position: center;
+        repeat: repeat;
+    }
+
+    font: {
+        size: 1em;
+        family: 'Poppins', sans-serif;
+    }
+
+    @media #{$medium} {
+        background: url("../images/bg-intro-desktop.png"), $red {
+            position: center;
+            repeat: repeat;
+        }
+    }
+}
+*, * *, *::after, *::before {
+    box-sizing: border-box;
+}
+
+main {
+    min-height: 100vh;
+    max-width: min(100vw, 600px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    flex: {
+        direction: column;
+        wrap: nowrap;
+    }
+
+    margin: {
+        left: auto;
+        right: auto;
+    }
+
+    @media #{$medium} {
+        max-width: min(90vw, 1000px);
+        flex-direction: row;
+        gap: 1em;
+
+        & > * {
+            width: 50%;
+        }
+    }
+}
+
+.content {
+    color: white;
+    text-align: center;
+    padding: 1em;
+
+    h1 {
+        line-height: 1.25em;
+    }
+
+    @media #{$medium} {
+        text-align: left;
+        padding: 1.5em;
+        font-size: 0.9em;
+
+        h1 {
+            font-size: 2.5em;
+        }
+    }
+}
+
+.signup {
+    padding: 1em;
+    text-align: center;
+    display: flex;
+    gap: 1.5em;
+    flex: {
+        direction: column;
+        wrap: nowrap;
+    }
+}
+
+.signup__pricing, .signup__form {
+    border-radius: 8px;
+}
+
+.signup__pricing {
+    @include shadow;
+
+    background-color: $blue;
+    padding: 0.5em;
+    text-align: inherit;
+    color: white;
+    font-size: 0.8em;
+}
+
+.signup__form {
+    @include shadow;
+
+    background-color: white;
+    padding: 1.5em;
+    position: relative;
+
+    input {
+        width: 100%;
+        height: 3em;
+        padding: 0 1em;
+        margin-top: 0.9em;
+        font: {
+            family: inherit;
+            weight: bolder;
+        }
+
+        
+        &:not([type="submit"]) {
+            border: 1px solid rgb(228, 226, 226);
+            border-radius: 4px;
+        }
+
+        & + span.error-icon {
+            position: absolute;
+            right: 2.5em;
+            padding-top: 1.25em;
+
+            img {
+                height: 1em;
+                width: 1em;
+            }
+        }
+
+        & ~ span.error-message {
+            position: relative;
+            display: block;
+            width: 100%;
+            text-align: right;
+            padding-top: 0;
+            color: $red;
+
+            font: {
+                size: 0.65em;
+                style: italic;
+                weight: 500;
+            }
+        }
+
+        &.error {
+            border: 2px solid $red;
+        }
+    }
+}
+
+input[type="submit"] {
+    @include shadow(hsl(154, 58%, 44%), 0.3em);
+
+    border: none;
+    border-radius: 4px;
+    background-color: $green;
+    text-transform: uppercase;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    padding-top: 6px;
+    cursor: pointer;
+
+    &:hover {
+        @include shadow($green, 0.3em);
+        background-color: hsl(154, 75%, 58%);
+    }
+}
+
+.terms-notice {
+    display: block;
+    margin-top: 1em;
+    padding: 0.5em;
+    font-size: 0.75em;
+    color: $grayish-blue;
+
+    span {
+        color: $red;
+        font-weight: bolder;
+    }
+}
+
+footer {
+    text-align: center;
+    color: white;
+    font-size: smaller;
+
+    a {
+        color: inherit;
+    }
+}
